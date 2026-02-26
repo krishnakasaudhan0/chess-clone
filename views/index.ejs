@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            width: 450px;
+            height: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 4px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .square.light {
+            background-color: #ebecd0;
+        }
+
+        .square.dark {
+            background-color: #779556;
+        }
+
+        .piece {
+            font-size: 44px;
+            cursor: grab;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .piece:active {
+            cursor: grabbing;
+        }
+
+        .piece.white {
+            color: #fff;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+        }
+
+        .piece.black {
+            color: #000;
+            filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+        }
+
+        .flipped {
+            transform: rotate(180deg);
+        }
+
+        .flipped .piece {
+            transform: rotate(180deg);
+        }
+    </style>
+    
+
+</head>
+<body>
+    
+    <div class="bg-gray-900 w-full h-screen flex items-center justify-center">
+        <div class="chessboard w-96 h-96">
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="/js/chessgame.js"></script>
+
+</body>
+</html>
